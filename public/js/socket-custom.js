@@ -4,7 +4,7 @@ socket.on('connect', function() {
     console.log('Conectado al servidor');
 });
 //ESTO ES PARA ESCUCHAR SUCESOS.
-socket.on('disconect', function() {
+socket.on('disconnect', function() {
     console.log('Perdimos conexion con el servidor');
 });
 

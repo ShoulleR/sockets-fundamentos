@@ -3,32 +3,38 @@ const { io } = require('../server');
 
 io.on('connection', (client) => {
 
-    console.log('Usuario Conectado');
+    console.log('Usuario conectado');
 
     client.emit('enviarMensaje', {
         usuario: 'Administrador',
-        mensaje: 'Bienvenido a la App'
+        mensaje: 'Bienvenido a esta aplicación'
     });
 
 
-    client.on('disconect', () => {
+
+    client.on('disconnect', () => {
         console.log('Usuario desconectado');
     });
 
-
+    // Escuchar el cliente
     client.on('enviarMensaje', (data, callback) => {
 
-        client.broadcast.emit('enviarMensaje', data); //ENTIENDE POR BROADCAST QUE EMITE A TODOS LOS USUARIOS QUE ESTEN CONECTADOS EN LA APLICACION
+        console.log(data);
 
-        /*if (mensaje.usuario) {
-            callback({
-                mensaje: ' Todo salio bien!'
-            });
-        } else {
-            callback({
-                mensaje: 'Todo salio MAL!!!!'
-            });
-        }*/
+        client.broadcast.emit('enviarMensaje', data);
+
+
+        // if (mensaje.usuario) {
+        //     callback({
+        //         resp: 'TODO SALIO BIEN!'
+        //     });
+
+        // } else {
+        //     callback({
+        //         resp: 'TODO SALIO MAL!!!!!!!!'
+        //     });
+        // }
+
 
 
     });
