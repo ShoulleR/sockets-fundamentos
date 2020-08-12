@@ -1,6 +1,6 @@
 const express = require('express');
 const socketIO = require('socket.io');
-const http = require('http'); // socket.io trabaja con esto, y al parecer no con express
+const http = require('https'); // socket.io trabaja con esto, y al parecer no con express
 
 const path = require('path');
 
