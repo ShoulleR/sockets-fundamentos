@@ -3,22 +3,26 @@ var socket = io();
 socket.on('connect', function() {
     console.log('Conectado al servidor');
 });
-//ESTO ES PARA ESCUCHAR SUCESOS.
+
+// escuchar
 socket.on('disconnect', function() {
-    console.log('Perdimos conexion con el servidor');
+
+    console.log('Perdimos conexión con el servidor');
+
 });
 
-//ENVIAR INFORMACION CON .EMIT() PARA QUE EL SERVIDOR LA ESCUCHE
+
+// Enviar información
 socket.emit('enviarMensaje', {
-        usuario: 'Miguel',
-        message: 'Hola mundo'
-    }),
-    function(resp) {
+    usuario: 'Fernando',
+    mensaje: 'Hola Mundo'
+}, function(resp) {
+    console.log('respuesta server: ', resp);
+});
 
-        console.log('Respuesta del Server: ', resp);
-    }
-
-//escuchar info
+// Escuchar información
 socket.on('enviarMensaje', function(mensaje) {
+
     console.log('Servidor:', mensaje);
+
 });
